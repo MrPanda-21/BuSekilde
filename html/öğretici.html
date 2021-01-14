@@ -1,0 +1,125 @@
+<!DOCTYPE html> <!--her html bunla başlar-->
+<html lang="en"><!--dili belirtir-->
+<head><!--başlıklarda belirtmede kullanılır-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><!--web  de yukardaki adı-->
+</head>
+<body><!--bizim gördüğümüz ana part-->
+    <div><!--bu tag bizim gruplara ayırmamıza yardım ediyor, daha düzenli olmasınıs sağlıyor.-->
+        <h1>Başlık</h1><!--bu bizim başlığımız-->
+        <a href="https://www.w3schools.com/html/html_links.asp" target="_blank"><!--target yerine '_blank(yeni sekmede)','_self(kendi üzerinde)','_parent(belgeyi ana pencerede açar)','_top(belgeyi pencerenin tam gövdesinde açar.)'-->
+        <img src="https://i.pinimg.com/originals/95/58/be/9558be6dc73e0d71d451ffd0162902b0.jpg" alt="foto" width="200" height="210" ><!--fotoğraf-->
+        </a><br>
+        <img src="https://www.w3schools.com/html/workplace.jpg" alt="çalışma masası" usemap="#çalışmaharitası"><!--use map ile resmi parçalara ayırıp farklı yerlere gönderme imkanımız var.-->
+        
+        <map name="çalışmaharitası">
+            <area shape="rect" coords="34,44,270,350" alt="Computer" href="https://en.wikipedia.org/wiki/Computer"><!--shape ne şekilde olduğunu gösterir, rect dikdörtgen,circle yuvarlak,poly kafana göre,default resmin tamamı şeklinde kullanılabilir.-->
+            <area shape="rect" coords="290,172,333,250" alt="Phone" href="https://en.wikipedia.org/wiki/Mobile_phone"><!--coords x ve y ye göre olup her 2 tanede bir kordinat gösterilir ,circle da x,y,tarıçap şeklindedir.-->
+            <area shape="circle" coords="337,300,44" alt="Coffee" href="https://en.wikipedia.org/wiki/Coffee"><!--hrefle llinke gönderir,alt ,ile uzunsüre basılırsa adını alır.-->
+        </map>
+        <br>
+        <picture><!--bu özellikle farklı ekranlarda farklı fotoğraf seçmeyi sağlıyor üstten başlıyor alta doğru eleyerek gidder bilgisayar.-->
+            <source  media="(min-width: 650px)"  srcset="https://imgw.rgcdn.nl/940b2590d6dd400c83843e0de3b6eaee/biggerthumb/Oude-Wetering-Foto-Ton-Wesselius.jpg?v=6Z4JMEuBq65KXL0b2mH0BA2"           >
+            <source  media="(min-width: 465px)"  srcset="https://i.pinimg.com/originals/6f/3f/96/6f3f96f535bc9e6be495f84e0a425966.jpg"           ><!--source istediğimiz kadar olabilir seçenek sunar,sonuncusu default olarak img kalmalıdır,media ile koşulları ve src set ve src ile  link bağlantısı gönderilir.-->
+            <img src="https://resimarama.net/wp-content/uploads/2019/07/Note-10-uhd-foto.jpg" alt="foto">
+        </picture>
+        <p>paragraf</p><!--bu bir paragraf-->
+        <a href="#A1">aşağı buyrun</a> <!--linkteki yere gitmek için kullanılır '#' kullanılır.-->
+        <pre> <!--yazılan metinleri boşluk,satır sonu , aralıklarını vb. koruyarak yazmak için kullanılır.Courier yazı tipi kullanılır.-->
+            aha bu korunur. 
+
+            hemde aynı şekilde,
+
+            hiç bozulmadan,
+
+            tıpkı şiir gibi.
+
+        </pre>
+        <p>bu bir alıntı (W3schools):</p>
+        <blockquote cite="https://www.w3schools.com/html/html_quotation_elements.asp"> <!--bu alıntı almayı sağlar.-->
+            Browsers normally insert quotation marks around the quotation.
+        </blockquote>
+        <p>ayrıca bu da kısa bir alıntı (W3schools): <q>marks around the quotation.</q></p><!--bu da kısa bir alıntı almayı sağlar.-->
+        <p>The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p> <!--bu bir kısaltma açıklamasını barındıran bir yazı-->
+        <p><cite>Yıldızların Altında</cite> çok sevilen bir şarkıydı.</p> <!--bir çalışmanın başlığını tanımlar.-->
+        <bdo dir="rtl">Bu yazı ters okunuyor.</bdo> <!--yazıyı ters çevirmek için kulanılabilir.rtl(right to left) ya da ltr(left to right şeklinde yazı çevrilebilir.-->
+        <p><small>Minnoş</small></p> <!--yazı minik yazılmak istenirse kullanılır-->
+        <p>Bu <mark>çok</mark><!--üzerini sarıyla çizer,vurgular--> 
+             önemli bir metindir ancak, <del>niçin</del> <!--metnin üzerini çizer.--> 
+              <ins>neden</ins> <!--bu metnin altını çizer,genelde eklenen metinlerde olur.-->
+              bilmiyoruz.ayrıca  H<sub>2</sub><!--sub alta minik bir yazı yerleştiriyor.-->
+              O sudur.ayrıca 2<sup>2</sup><!--sup üste minik bir yazı ekler bir sayının karesi ya da dip notlar için kullanılabilir.-->
+               4 eder.
+        </p>
+        <iframe src="https://files.sikayetvar.com/complaint/1353/13533841/39c25eb5-010f-4616-8515-ffd3fd5eb4dc-1580227825_375x180.jpg" title="İframe budur." name="1" height="200" width="300"></iframe><!--iframe site içi site istersek kullanırız,boyut ve title belirledik,foto koyduk,,,name atadık ki bu bize oraya link girmemize yardım edecek.-->
+        <a href="https://www.google.com/search?q=i+frame&oq=i+frame&aqs=chrome..69i57j0i10l2j0j0i10j69i60l3.1281j0j7&sourceid=chrome&ie=UTF-8" target="1">link</a><!--normal bir link koyduk,target 'a iframe deki name i ekledik böylece link iframe'de açılacak.-->
+        <br>     <!--bu bir boşluk tag i, boş bir satır oluşturur.-->
+    </div>
+    <div>
+        <ul> <!--unordered list, noktalar ile olan liste için belirleyici satır, içine noktaları koyuyoruz.-->
+            <li>bu bir noktalı maddenin ilk noktası</li><!--nokta koymaya yardım ediyor.-->
+            <ol type="1" start="1"> <!--ordered list, sayılar ile olan listeler oluşturmayı sağlamaktadır,içine saylar koyuyoruz, bu bir noktanın içerisinde.-->
+                <li>sayılı madde 1 </li> <!--bu sayılı liste yapmayı sağlıyor-->
+                <li>sayılı madde 2 </li>
+                <br>
+                <li><a href="https://visualstudio.microsoft.com/">link</a></li> <!--link koyuyoruz a tag i ile, bir liste içerisinde.-->
+            </ol>
+            <br>
+            <br>
+            <li>bu ikinci nokta</li>
+            <ol type="I" start="3"><!--start o grubun hangi sayıncı terimden başlatmak istediğmizi yazabildiğimiz yer.type o listenin neye göre sırlanacağı gösterilir bu şunlar olabilir: A,a,1,büyük romen rakamları(I),küçük romen rakamları(i) -->
+                <li>sayılı madde 3 </li>
+                <li>sayılı madde 4 </li>
+                <br>
+                <li><button>buton</button></li> <!--buton koyuyoruz button tag i ile,bir liste içerisinde.-->
+            </ol>
+        </ul>
+        <dl><!--açıklama listelerini yapar-->
+            <dt>açıklancak şey</dt><!--açıklanacak şey-->
+            <dd>açıklama...şeklinde</dd><!--açıklama-->
+        </dl>
+        <table><!--tablo oluşturma elementi-->
+            <tr><!--her grup için başta ve sonda olmalıdır,istediğimiz kadar olabilir-->
+                <th>bu ilk</th><!--genelde üstte olur çünkü direk strong olarak yazılır, istediğim kadar kullanabiliriz. -->
+                <th>etti 2</th>
+                <th>çekirge gelemezdi buraya</th>
+            </tr>
+            <tr>
+                <td>tablo</td><!--genelde tablo maddesi olarak yazılır,istediğimiz kadar yazabiliriz,hem th hem de td içine istediğimizi koyabiliriz(input,buton,link,resim).-->
+                <td><button>button konulur</button></td>
+                <td><input type="password" placeholder="şifre yeri bile" ></td>
+            </tr>
+            <tr>
+                <td>bu kadar kolay</td>
+                <td><input type="range"></td>
+                <td><a href="https://www.w3schools.com/html/html_tables.asp">link bilen oluyo ab</a></td>
+            </tr>
+            <tr>
+                <td rowspan="4"><img src="https://imgw.rgcdn.nl/940b2590d6dd400c83843e0de3b6eaee/biggerthumb/Oude-Wetering-Foto-Ton-Wesselius.jpg?v=6Z4JMEuBq65KXL0b2mH0BA2"></td>
+                <td colspan="2">çift yer burası toptan ha böle gider bu...</td>
+                
+            </tr>
+        </table>
+    </div>
+    <div>
+        <h4>Burada inputları öğreniceğiz:</h4>
+        <hr> <!--bir çizgi çizer-->
+        <input type="text" placeholder="Yazı"> <!--burada kullanıcı inputunun girilme yeri var,bu text yerine password,email,checkbox-->
+    </div>
+    <div>
+        <p id="A1">buyrun benim bişi mi dedin?</p> <!--sayfa içi linkle hızlıca buraya gelmek için id sonrası bir kod yazdım kafama göre.-->
+
+    <address> <!--çalışmanın yazarı/sahibinin için iletişim bilgilerini tanımlar.-->
+        Written by Mr.Panda<br>
+        Visit us at:0555 422 ** **<br>
+        W3school<br>
+        EV,İstanbul<br>
+        TR
+        </address>
+        <button><a href="mailto:bune@gmail.com" title="bune@gmail.com"> <!--mail to :gmaile mesaj göndermeyi açar,title ise yazının üzerine gelindiğinde bir bilgi vermek için kullanılır.-->
+            bana e mail atın sorunuz varsa.</a></button>
+    </div>
+    
+</body>
+</html>

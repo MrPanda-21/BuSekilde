@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--genişlik sayfaya bakılan genişliğe eşitlenir, sayfa görünümü 1 yani tam olarak ayarlanmış.-->
+    <title>Deneme</title>
+    <style>
+       *{ /*bu şekilde yaptıklarımızın yüseklik ve enine paddingler ve marginler katılmayacak...*/
+           box-sizing: border-box;
+       } /*bu şekilde sayfa 12 ızgaraya bölünür ve istersek kolayca bunları değiştireblieceğimizden, telefon ve tablete uyumlu bir web-sitesi oluşturabiliriz.*/
+        column-1{width: 8.33%;}
+        column-2{width: 16.66%;}
+        column-3{width: 25%;}
+        column-4{width: 33.33%;}
+        column-5{width: 41.66%;}
+        column-6{width: 50%;}
+        column-7{width: 58.33%;}
+        column-8{width: 66.66%;}
+        column-9{width: 75%;}
+        column-10{width: 83.33%;}
+        column-11{width: 91.66%;}
+        column-12{width: 100%;}
+        
+       
+        div.a{
+            
+            display: flex; /*esnek kutu(flexbox) için flexbox yapacağımızı duyurduk. */
+            flex-direction: column;/*flexbox un yönü tanımlanır,bunlar => row (sıra),column(sütun),column/row-reverse(sıra/sütun tersten)*/
+            flex-wrap: nowrap;/*wrap, kaydırmayı söyler .eğer ekran daralır ise ne olacağına karar verir,bunlar=> wrap(kayar ,alt satıra), nowrap(kaydırılmaz,sıkıştırılır.)(varsayılan),wrap-reverse(terse doğru ,yukarı doğru kaydırılır.)*/
+            flex-flow: column nowrap;/*flex-direction ve flex-wrap kısaltılarak bu yol ile yazılabilir.*/
+            justify-content: flex-start;/*yatayda flex parçalarının flexbox da nasıl durması gerektiğine karar verir,bunlar => center(hepsi ortaya hizalı), flex-start(hepsi baştan sıralı)(varsayılan), flex-end(hepsi sondan hizalı,yön değişimi yok.), space-around(flexparçalarını köşelerde boşluk olacak şekilde dağıtılır.), space-between(flexparçaları köşelerde de boşluk olmayacak şekilde dağıtılır.)*/
+            align-items: center;/*dikeyden flexitems ın kapladıkları alanları belirtir,bunlar => stretch(en üstten alta kadar tüm alanı kaplar.)(varsayılan), flex-start(en üsttedir flexitems ,hizalanır.), center(ortaya hizalıdırlar.), flex-end(alta göre hizalar.), baseline(içindekilerin temel hizalarından hizalar,boyutlar farklı olabilir.)*/
+            align-content: space-between;/*justify-content: ; in dikeyde durmaları gereken alanları belirtir,bunlar aynıdır justify-content: ; ile.bir flexitem tam ortada olsun olsun istiyorsak hem justify-content: ; hem de align-content: ; i center yapabiliriz..*/
+            border: darkred solid 2px;
+            height: 120px;
+            width: 50px;
+            background-color: white;
+            position: relative;/*animasyonun hareket etmesi için position u relative yaptık.*/
+            animation-name: animasyon;/*istediğimiz animasypn şeklini yazdık.*/
+            animation-duration: 4s;/*animasyon süresi */
+            animation-timing-function: ease-in-out;/*zamana bağlı nasıl ilerleyeceği belirtilir,bunlar transition-timing-function: ; ile aynı şeylere sahiptir.*/
+            animation-delay: 5s;/*animasyonun bekleme süresi,(-)eksi li birimde verilebilir,o zaman başladıktan sonraki bir zamanda devam eder gibi olur.*/
+            animation-iteration-count: 2;/*animasyonun kaç kere oynayacağını belirleriz, bizim yaptığımızda 2 kere oynayacak,sınırsız için "infinite" kullanılmalıdır.*/
+            animation-direction: alternate-reverse;/*animasyonun hangi yönde oynayacağı belirlenir,bunlar: normal(varsayılan)(yazdığımız gibi), reverse(tersten başlar.), alternative(önce normal,sonra reverse), alternative-reverse(önce reverse,sonra normal.)*/
+            animation-fill-mode: both;/*animmasyonun başlangıç ve sondaki hallerini koruması sağlanabilir,bunlar : none(varsayılan)(bir etki yok normal animasyon), forwards(animasyon bitiş yerini korur.), backwards(animasyon delay süresi boyunca ilk hareketin özelliklerini korur.), both(hem backwards hem forwards hareketlerini gerçekleştirir.)*/
+          /*animation: ; yaparak bunun stenosu yapılabilir, bu sıraya göre ilk 6'sını kapsar,animation-fill-mode: ; manuel ve ayrı olarak yazılmalıdır.*/
+            transition: height 2s, width 4s, transform 4s;/* ile genişlik ögesi değişime uğrayacak ve bu değişim 2 sn sürecek ancak ne oldacağı henüz belli değil,istediğimiz kadar değişim ekleyebiliriz.*/
+            transition-timing-function: ease; /*ile geçiş zaman ayarını ayarlamamıza yarar ve bunlar => ease(yavaş,hızlı,yavaş)(varsayılan),linear(aynı,aynı,aynı),ease-in(yavaş,hızlı,hızlı),ease-out(hizli,hizli,yavaş),ease-in-out(yavaş,hızlı,yavaş)(ease den biraz daha yavaştır.)*/
+            transition-delay: 0.5s; /*ile geçişi geciktirebiliriz,misal biz üzerine geldikten 2 sn sonra boyu uzasın vb.(2sn yazılmalı o araya)
+            steno yapılabilir(elbette, bu sırayla...).*/
+            
+        }
+        @keyframes animasyon{/*animasyonlarda keyframes kullanılır ve bu şu an sadece bir animasyon bunu istediğimiz elemente adı yazılarak başlatabiliriz.*/
+          /*form{}
+            to{}  şeklinde animasyon key i verirsek bir olay dan diğerine sadece 1 seçme hakkımız olmuş olur,ancak yüzdeler ile;*/
+            0% {background-color: white; left: 0; top: 0;}/*başlangıcı belirtir,100 de sonu.*/
+            25% {background-color: snow; left: 200px;top: 0}/*bg-color ile arka plan rengini ne olacağı belirlenebilir.*/
+            50% {background-color: lightblue; left: 200px; top: 200px;}/*soldan uzaklığı ve yukarıya göre uzaklığı belirlenir.*/
+            75% {background-color: skyblue; left: 0; top: 200px;}/*değerler negatif olabilir.*/
+            100% {background-color: white; left: 0; top: 0;}
+
+        }
+        .b1{
+            flex-grow: 0;/*diğer ögelere göre büyüme derecesidir, varsayılan 0 olup misal bit item 1 diğeri 8 ise her büyümede biri diğerine göre 8kat daha fazla büyüyecek,fazla olan büyür,0 ise hiç büyümez,(-)eksi olduğu durumda 0 olarak geçer.*/
+            flex-shrink: 3;/*diğer ögelere göre küçülme derecesidir,varsayılan 1 dir.0 da asla küçülmez,2 olan 1 e göre 2 kat hızlı küçülür,(-)eksi li değerler 1 e yuvarlanır.*/
+            flex-basis: 120px;/*esnek ögenin ilk uzunluğunu belirtir.*/
+          /*flex: ; ile yukardaki 3 tanesinin kısaltımı tek bir öge ile yapılır(Elbette ,bu sırayla...).*/
+            background-color: blueviolet;
+            align-self: flex-end;/*align-items: ; i etkisiz kılar, onla yanı özellikleri barındırır,sadece item için özel bir align-items: ; oluşturur.*/
+            padding: 0 14px;
+            order: 0;/*Flexitems ların sırası yazıldığı gibi olmak zorunda değildir, order: ; ile kaçıncı sırada gelmeleri gerktiğini ayarlayabiliriz.*/
+        }
+        .b2{
+            flex-grow: 0;
+            flex-shrink: 2;
+            flex-basis: 120px;
+            background-color: cornflowerblue;
+            padding:0 14px;
+        }
+        .b3{/*position: relative; ile tooltip alabilmesi amaçlanmaktadır.*/
+            flex: 3 1 120px;
+            background-color: darkcyan;
+            order: 2;
+            padding:0 14px;
+            position: relative;
+        }
+        .b32{/*tooltip imizi ilk hidden (saklı) yapıyoruz, absolute ile yerini değiştirme ve absolute nin diğer özelliklerinden faydalanıyoruz, sonra tooltip i görselleştiriyoruz.*/
+            visibility: hidden;
+            position: absolute;
+
+            background-color: black;
+            color: snow;
+            padding: 5px 1px;
+            width: 120px;
+            text-align: center;
+            border-radius: 5px;
+            /*konumunu ayarlarız , soldan ve yukarıdan uzaklık.*/
+            top: -5px;
+            left: 105%;
+            /*opaklığı yavaşça animasyonlu arttırdık, bunun için transition kullandık.*/
+            opacity: 0;
+            transition: opacity 1s ease 0.5s;
+
+
+        }
+        div.a:hover{
+             /*2D*/ 
+            transform:translate(50px,100px); /*ilki yazının sola göre kaç px uzaklıkta olacağını belirtir,2.'si üstten ne kadar ilerleyeceğini belirtir, (-)eksi px yazılabilir.*/
+            transform:rotate(20deg);/*deg(derece) kadar cismi döndürür, (-)eksi deg li değerler alabilir.*/
+            transform:skew(20deg,10deg);/*eksenler boyunca eğriltmeyi sağlar, ilki(20deg) X ekseni, ikincisi(10deg) Y ekseni olarak belirtilir.
+            transform:skewX(); ya da skewY(); ile belirli bir açı(deg) ile X/Y ekseni boyunca eğriltmeye yarar.*/
+            transform: scale(2,3);/*yazının büyüklüğünü katlarına çıkarır yani,ilk'i(2)genişlik (2) katına, yükseklik(3) katına çıkar, eğer boyutundan az olsun istersek boyutunu 1 olduğunu bldiğimizden 0.bir sayı koyuyoruz mesela 0.5 yarım boy.
+            tarnsform: scaleX(); ya da scaleY(); ile boşluk sadece o kısmı uzatır, x genişlik,y uzunluk.*/
+            transform: matrix(2,3,2,1,5,10);/*tüm transformları tek bir çatı altında toplar,bunlar sırasıyla => scaleX(),scaleY(),skewX(),skewY(),translateX(),translateY();*/
+            /*3D*/
+            transform: rotateX(150deg);/*X-ekseni ni ayna olarak alarak döner açıya göre.*/
+            transform: rotateY(180deg);/*Y-ekseni ni ayna olarak açıya bağlı olarak döner.*/
+            transform: rotateZ(360deg);/*Z-ekseni boyunca açıya bağlı olarak döner.*/ 
+            /*değişim*/
+            height:240px;/* yaparak yularda belli olmayan değşimi tanımlıyoruz bu height yı 120 den 240 a getirmek*/
+            width: 100px;/*50 den 100 e genişliği getirmek ve rotateZyi 360 döndürmek.*/
+
+
+        }
+        .b3:hover .b32{/*b3 classına dokunduğunda b32 class ını görünür yapmaya yarar,ve animasyon(opacity) gerçekleşmesine yarar.*/
+            visibility: visible;
+            opacity: 1;
+
+        }
+        .b3 .b32:after{ /*tooltip oku yapımı, boş bir satır yapıp ona border ekledik yani bir border oluşturduk, onu görünümleştirdik,istediğimiz oku renkler yardımıyla yarladık, absolute ile yeri ayarladık,top , right ve margin ile yerini iyice oluşturduk.*/
+            content: " ";
+            border: solid 5px;
+            border-color: transparent black transparent transparent;
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            margin-top: -5px;
+
+        }
+        .container:hover .deneme2{
+            width: 100%;
+            left: 100px;
+            
+        }
+       .deneme2{
+            position:absolute;
+            bottom: 0;
+            left: 50px;
+            background: linear-gradient(45deg,red,rgb(255, 0, 179));
+            overflow: hidden;
+            width: 0;
+            height: 100%;
+            transition: width 1s ease, left 4s ease;
+        }
+        .container{
+            position:  relative;
+            width: 50%;
+        }
+        .a::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+
+        .p{
+            column-count:3;/*kaç column olcaksa onu belirtir.*/
+            /*column-gap: 40px;/*column lar arası boşluk*/
+            column-rule: solid 1px skyblue;/*border gibi column sınırlarını yazıyoruz.*/
+            column-width: auto;/*değer girerek ekranın alanına göre kaç column a bölmesini söyleyebiliriz, column-count yerine kullanılabilir, bir esneklik de sağlayabilir column-count a.
+            columns: ; ile her sutun için min. genişlik ve sütün sayısı belirlenebilir, yer yetmez ise kolon sayısı değişebilir.*/
+        }
+        h2{
+            column-span: all;
+            
+        }
+        .text{
+            
+            white-space: nowrap; 
+            color: white;
+          font-size: 20px;
+          position: absolute;
+            overflow: hidden;
+          top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+<body>
+    <script>src="New.js"</script>
+    <div class="container">
+        <div class="a "> <!--flexbox için kutumuzu oluşturduk.-->
+            <div class="b1">1</div>
+            <div class="b2">2</div>
+            <div class="b3">3 <span class="b32">parça</span></div>
+        </div>
+        <div class="deneme2">
+            <div class="text">
+                Merhaba
+            </div>
+           
+        </div>
+    </div>
+        <div class="p">
+            
+         <h2>salam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım</h2> çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorum
+         salam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorumsalam bu otuz kelimelik bir yazı olmasını planladım ve bunu başarmak için elimden geleni yapacağım çünkü bunun sayesinde aklımdaki şeyi gerçekleştirebileceğimee inancım tam olduğunu sanıyor ve yazımı tam burada noktalıyorum
+        </div>
+    <div>
+        <img style="background-size: 100% 100%;" src="Screen Shot 2020-11-18 at 14.42.39.png" alt="cihaz sınır değerleri" width="700px" height="300px"><!--background-size:; ı aşağıda anlattık, ve bir özellik daha ekleyelim: 100% 100% , height ve width belirledikten sonra o alana şığmak için genişleyecektir fotoğraf.-->
+    </div>
+        <!--resim veya başka bir şeyi "filter: ;" kalıbı içine yazarız, bulanıklaştırma=> blur(px), grileştirme=> grayscale(%), 
+        parlaklaştırma=> brightness(%>), konstast ya da sihayla beyaz farkı=>contrast(%>), renklerin parlaklığı=> saturate(%>)
+        kahverengi ya da sepya=> sepia(%), bir rebgi öne çıkararır deg bunu belirtier=>hue-rotate(deg), renkleri ters çevirme=>invert(%)
+        ayrıca opacity: ; ile opaklığı ayarlayabiliriz, max-1,min-0 noktalı değerlerle ayarlayabiliriz.
+
+        bunlar ile fotoğrafı ayarlıyobiliyruz, foto editörlere ihtiyaç kalmadı sanırım artık :)) .
+
+        background-attachment: ; ile eğer fixed koyarsa ekrana sabit kalır, kayan scroll.
+        max-width/height: ; maximum genişlik/yüksekliği belirtir,sıkıştırılabilir olur.
+        bir textarea yaparsak ve alanını kendimiz belirlemek istiyorsak resize:none; yapabiliriz.
+        şeçmeli bir for için form yazmalı arasına select arasına da option yazmalıyız.
+        bir resmi border yapmak istiyorsak border-image: img X round/ X% round;eğer köşeler sabit arası uzatılsın istiyorsak round yerine stretch koyabiliriz.
+        linear-gradient() ı tekrarlatmak istiyorsak arka plana ,repeating-linear-gradient(); yapabiliriz.
+        radial-gradient(şekil(circle ya da ellipse),renk kaplama alanı, renk ka. ...); şeklinde radial-gradient yani cisimsel renk geçişli arka planlar yapabiliriz.
+        ayrıca başlangıca size(farthest/closest-side/corner)  ayarlayıp ışığın ilk geldiği yere göre boyutlandırma bapılabilmektedir(shape harici sanırım...).
+        repeating-radial-gradient(); yaparak radial-gradiant(); ın tekrarlanmasını sağlayabiliriz.
+        text-overflow: ; yapısıyla belirlediğimiz alana sığmayan kelimelere ne olacağını ayarlayabiliriz, bunlar => visible(görünür ve taşar), ellipsis(3nokta koyar), clip(keser)
+        word-wrap:break-word; yapısıyla çok uzun bir kelimenin belirlediğimiz alana sığmaz ise alt satıra geçilmesini sağlarız.
+        word-break: ; ile tüm kelimelerin belirlediğimiz alanda satır sonunda ne olacağını belirleriz,bunlar => keep-all(sığmayan kelime alt satıra geçer), brea-all(satır sonuna kadar kelime devam etsin sonra heceye bakılmaksızın yarılsın.)
+        writing-mode: ; ile yazının yönüne karar verilir,bunlar => horizontal-tb(normal yazı),vertical-rt(soldan sağa 90derece dönmüş halli)
+        font-family:istediğiniz ad; seşklinde ve src: url(); ile yazı linki yapıp ve bunları @font-face{} içine alırsak bir yazı tipi tanımlamış oluruz.
+        bir fotonun görüntüsünü sayfa boyutuna duyarlı olmaası için bir max-width: ; belirleyip height: auto; yapabiliriz.
+        bir resmi ortalamak için display:block; yapıp margin-left/right:auto; yapıp resmin sayfayı ortalamasını sağlayabiliriz.
+        :hover li bir foto alıp ona scaleX(-1) yaparsanız foto terse döner, ve artık başka hangi yöne istiyorsanız.
+        border-radius: 50%; ile bir elementi yuvarlak-oval yapabiliriz.
+        resize: ;  (overflow:auto; ile kayma çubuğu gerekirse oluşur.)ile kullanıcının belirleyeceği bir genişliğe ne yapılacağı karar verilir,bunlar => horizontal(yatayda kullanıcı alanı daraltabilir ya da genişletebilir.), vertical(dikeyde kullanıcı alanı daraltabilir ya da genişletebilir.), both(kullanıcı isteğini yapar.), none(kullanıcı hiçbir şey yapamaz.)
+        outline-offset: ; ile border ile outline arasının uzunluğunu ayarlayabiliriz.outline öğe boyutunun bir parçası değildir,başka elementlere girebilir.
+        box-sizing: border-box; ile padding eklesek bile her şey aynı olacak,padding li ile padding siz aynı boyutta olmuş olacak, padding genişlik veya uzunluğa eklenmeyecektir.
+    -->
+    </div>
+     <!--bir şeyin üzerine gelme tıklama ve sonrası nı ayarlamak için;
+         Ad:Şekil{} örn=> a:hover{color:white;} gibi... şekiller=> hover (üzerine gelindiğinde), visited (bastıktan sonra), active (tıklandığı anda)
+         , link (normal hal) .
+
+         background-position : ; ile arka plan yerinia ayarlanır, ilk soldan ne kadr boşluk olacağı sonra da üstten ne kadar boşluk olunuacağı yazılır.(rec. px)
+        
+       list-style-type: ; a listelerin type ini ayarlarız bunlar =>circle,square,upper-roman,lower-alpha...foto koymak istersek list-style-image: url("");
+       list-style-position: ; koyarak listelerin yerini belirleyebiliriz bunlar => outside,inside olabilir. padding,margin 0 ve list-style-type none olursa liste başları olmaz normal yazı gibi olur.
+
+       tabloda border-collapse:collapse; yaparak tüm sınırları 1 çizgi şeklinde yapar ,yan yana 2 çizgiyi birleştirir.
+       tr:nth-child(even ya da odd hangisilerini istiyorsan){} => şeklinde border th lerini 2 farklı gruba ayarlayıp bir şeyler yapabilirsin.
+
+       overflow: ; ile satıra sığmayan bir şeyin konumunu belirler.overflow-x veya overflow-y olabilir bu durumda sadece istenilen yöne overflow uygulandığı belirtilmiş olabilir.
+       Peki overflow değerleri => visible(hiç bir elleme yapmaz sığmayan şeyler dışarı taşar), hidden(alttan devamı olduğu görülür ama ne olduğu nu göremeyiz),
+       scroll(bir kaydırma çubuğu ekler ve Mac harici bilg. görünür.), auto (eğer gerekliyse kaydırma çubuğu ekler.)
+
+       position: ; ile bir elementin konumu belirlenir. static (hareket ettirilemez, sade hali), relative(hareket ettirilir, yazdığı an bir yere geçmez.)
+       fixed(hareket ettirilir ve sayfa nereye giderse gitsin olduğu yerde kalır.), absolute(yeri değişir,yazıldığı an başka bir ögenin boşluğuna girebilir.)
+       sticky(o yere gelene kadar ekranda yok ondan sonra sayfa hareketlerinse sayfada kalır.)
+       z-index: ; o bölgedeki üstte kalma veya altta kalanı belirtir,normal hali 0 dır ,- li değer alabilir 
+       ,misal z-index: 1; olan bir element z-index-0 olan bir elemente göre üsttedir.
+
+    -->
+    </div>
+
+        <!--float: ; ile bir elementi div,span,body içinde hareket ettirebiliriz. komutları => right,left,none ya da inherit olur.
+        inherit yukardan geleni alma ,miras alma yapar.
+        clear: ; ile temizlenir ,float. değerleri => left,right,none,inherit ya da both olur.
+        eğer taşma yaşanırsa overflow: auto; yapılabilir. ya da : .class neyse artık::after {
+                                                                    content: "";
+                                                                    clear: both;
+                                                                    display: table;
+                                                                   } 
+        yanyana kutular yapıldıktan sonra kutuların kırılmaması için box-sizing: ; eklenerek içine border-box yazabiliriz.
+        margin:auto; yaparak elementi içinde olduğu yere ortalayabiliriz.resim ise display:block; da eklemeliyiz.bu bir şeyi görünürleştirir.
+        line-height = height olur, line-height: ; ile bir metnin uzunluğu ayarlanır.
+
+        seçmede div p{} yaparsak div içindeki tüm p ler, div > p{} yaparsak div içinde doğrudan dive bağlı olan tüm p ler,
+        div + p{} div den hemen sonraki p, div ~ p{} ise div den sonraki tüm p ler i etkiler.
+
+
+        -->
+
+    </div>
+
+    <div>
+        <!--@media screen/all/print/speech and (max/min-width: ~~~px) and(bir tane daha ()lı kural ekleyebilirz bu aralık belirtir.,(virgülden sonra devam edebiliriaz eklemeye...bu veya anlamına gelir.){} şeklinde ekran boyutuna göre duyarlı websiteleri olmuşturmamıza yardım edecek.
+        (orientation: landscape) ile telefon/tablet vs. yana yatırılınca olacak şeyi ayarlamak için kullanılır.)-->
+    </div>
+
+    <div>
+        <!--arka plan fotoğraflarında background: url("") konumu(center,right bottom vb.) tekrarlama(repeat ya da no-repeat) konumlandırma(fixed,static,relative...position: ; ile de yapılabilir.) , başka bir tane ekleyeceksek... , koyup devam ederiz.
+        background-size: ; da ise arka planı manuel yazabiliriz ya da contain(resmin tamamı içerde ama boşluk çok), cover(bazı yerler olmasada güzel bir ölçekle iyi bir konumlandırma yapar.).
+        ayrıca background: ; ile bir şeyler tanımladıktan sonra background-size: 1.foto,2.foto, ...; şeklinde hepsini bir arada yapabiliriz.
+        arka plan başlangıcını background-origin: ; ile belirleyebiliriz bunlar: border-box(border ın sol üst köşesinden başlar) ,padding-box(padding in sol üst) ve content-box(direk yazının sol üst köşesi).
+        background: renk; yaparsak buna background-clip: ; özelliği ekleyerek ve içine "origin" ile aynı şeyleri yazıp rengin nereyei kaplaması gerektiğini belirleyebiliriz.
+    
+        gölge efektinde, metnin kopyasını oluşturur ve biz ona ekleme yaparak gölgeyi sağlarız.hepsi içinde gösterimi aşağıda:
+         text-shadow: yukardan uzaklık(px) sola doğru uzaklık(px) bulanıklık(/blur,px) renk, ve bunlardan istediğimiz kadar... ; bir de (-) kullanımına izin vardır,gölgesiz ve etrafı sınırla çevrili gibi gözükmesi için teker teker aşağı yukarı... siyah yapılabilir.
+        bir kutunun veya bir resime gölge eklerken onun sınırlarını kutu haline getirip gölgeyi sağlarız.gösterim aşağıda:
+         box-shadow: yukardan uzaklık(px) sola doğru uzaklık(px) bulanıklık(/blur,px) renk, ve bunlardan istediğimiz kadar... ; bir de (-) kullanımına izin vardır,gölgesiz ve etrafı sınırla çevrili gibi gözükmesi için teker teker aşağı yukarı... siyah yapılabilir.
+         bir kart gibi bir şey oluşturucaksak ve div yapıp içine box-shadow: ; yapmak direkmen ona sınır ekleyecektir.
+        
+        normalde fotoları en boy oranını değiştirdiğimizde fotolar ona uyum sağlar ve bilgisayar onu sıkıştırır ancak biz bunun yerine istenen alandan az olmasını istediğimiz durumda , fotoğrafa ne olacağını
+        bir kod ile belirleyebiliriz, bu object-fit: ; dir ve komutları => fill(gerekirse nesneyi sıkıştırır.)(varsayılan model), contain(ölçekli bir şekilde küçültür), cover(sığmayan yerler kırpılır.), none(değişen içerik yeniden boyutlanmaz.), scale-down(contain ile none karışımı, daha küçük bir resim oluşur.)-->
+    </div>
+
+    <div>
+        <!--burdan sonra css deki ad yazmadaki :dan sonrasındaki kodlara bakacağız, burda p: olarak kabul edilip sonrası için yazılmıştır:
+            1. :first-child  ilk p,   2.:lang(ad ne istersen) anlamı bir şeyin ne olduğunu belirtir misal quotes: "1" "1"; yaparak bir yere lang=ad ile olduğu yerlere 1 ekler. 
+         :focus üzerine tıklandığındaki renkler vb.(inputlarda), :not() bir şey eklendiğinde (misal :hover) devamına :not() yapıp paranteze etkilenmesini istemediğimiz yeri yazabiliriz.
+            1. ::first-line metnin ilk satırını şeçer.    2. ::first-letter metnin ilk harfini seçer. , 3. ::before  her p den önce ki bölümü seçer,
+         oraya bir şeyler ekleyebilirsiniz.   3. ::after her p den sonra ki bölümü seçer, oraya bir şeyler ekleyebilirsiniz.  
+         4.  ::selection mouse ile seçilinceki halini alırsınız, firefox da :-moz-selection olarak yazılması gerekli.
+            1. [target] p ve p içinde target olan hepsini seçer, [target="_blank"] p ve yalnızca içinde ki olanları seçer , [target~="_blank"] p olan ve içinde geçen hepsini şeçer., [class|="top"] ile p ve başı top olanları seçer (toplan olmaz).,
+         [class^="top"] başında tüm top geçenler ve p(toplan olur.), [class$="top"] sonu top olan ve p olan hepsi,
+         [class*="top"] p olan ve içinde top olan hepsi., -->
+    </div>
+    <div>
+        <!--:root{} içine -- ile başlayan bir addan sonra değer konulabilir ve istediğimizde onu çağırmak için var(--değerimiz) yapmamaız yeterlidir.
+        eğer sadece bir bölümde(misal button{} da sadece) kullanılabilecek bir değişken istediğimizde onun(button{} içine) içine yeni bir değer koyuyoruz misal --blue:skyblue; ise :root da button{--blue:blue;} şeklinde sadece button da kullanılabilen bir değer atamış olduk ya da yeni bir --blue_2x:blue; şeklinde yeni bir değişken de oluşturabilirdik.
+        -->
+    </div>
+
+    <div>
+        <!--bir duyarlı web-sitesi yaparken hep önce telefona göre tasarlamalıyız, max-width kullanmalıyız min-width yerine.
+        ayrıca col-1{...}  yapıp bunu bilgisayarlarda col-s-1{...} yapıp bunu tabletlerde ve telefonlarda da [class*=col-"]{width:100%;} yaparak her ekran için ayrı ve güzel bir web-sitesi yapmış oluruz, col- ları @media ile ayırdığımız yerlere yapmalıyız ki yanlış bir şey olmasın.
+        media sorgusu içinde display:none; ile bir element yok edilebilir.
+    min-width: ; yerine min-device-width: ; ile medya sorgusunda yarayıcı genişliği değil cihaz genişliği baz alınmış olur.
+    <picture>
+     <source srcset=""fotoğraf url si"" (isteğe bağlı)media="(max/min-width/height: alan)">
+     (yukardakinden istenen kadar)...
+     (bu özelliiğin kullanılmayan tarayıcılarda normal bir img yazılabilir.)
+    </picture>                ile html de olan picture elementiyle media birleşirse farklı cihaz ve ortamlarda farklı resimler çıkması sağlanabilir.
+
+    bir <video></video> oluşturulabilir ve içine video konabilir, aynı picture gibi çalışır, height:auto; ve width:100%; yapılarak duyarlı video yapılabilir. -->
+    </div>
+    <div>
+        <!--Grid(ızgara) şablonlar yapılarak float veya positioning kullanmadan web-sayfasının tasarımını kolaylaştırır, nasıl ?:
+        display: grid; ile büyük bir div içine yazılır,içine küçük item div leri oluşturulur, grid block tur ancak biz yarım yer kaplasın istersek inline-grid ile değiştirebiliriz.
+    ızgara da satır(row),sütun(column) ve boşluk(gap) vardır ve eğer biz item lar arası boşlukları ayarlamak istersek gap ları değiştirmemiz gerekir, bunlar:
+    grip-column-gap: ; sütunlardaki gap ları, grip-row-gap: ; satırdaki gapları ayarlar, grip-gap: ; ile ilk row sonra columnu tek bir satırda yazmayı sağlar , tek değer girilirse her ikisi için aynı değer uygulanır.
+    column arasına column çizgileri, row da row çizgileri denir.bir ızgaranın boyunu ayarlamak için misal yatayda 2 alan kaplaması için grid-column-start: 1; ve sonra grid-column-end: 3; yazarak çizgi 1 den 3 arası 1 item a verilmiş olur ve o bunu kullanabilir.
+    ayrıca grid-column/row(hangi yönü istersek): ; ile onların kestirmesi yapılabilir,bir itemin 2 itemlik yer kaplaması için 2 yol vardır,bunlar içine 1 / 3 ya da 1 / span 2 olablir böylelikle 1 den 3 e 2 blockluk alan kaplanır.
+    ve grid-area: ; ile tümünün kısaltması yapılır,burada ilk hangi satırdan başlayacağı sonra hangi sütün sonra hangi satırda bitecek sonra hangi sütünda bitecek yerleştirilir, örnek 1 / 2 / span 3 / 4 ile 3 itemlik yükseklik 2 itemlik genişliği var.
+    grid-area: ; ile isim tanımlamak mümkün ve bunlarla yerler yapmak da ,(.)nokta adsız olduğunu belirtir,boşluk başka bir item olduğunu,yeni bir satır için (')kesme işareti içine alabiliriz, her grup 1 satır.
+    grid-template-areas: ; ile isimleri ardı ardına yazarız,bir ögeye isim atayıp sırayla istediğiniz yerlere onun adını vererek o bölgeleri onun yapabiliriz.
+    büyük div içine grid-template-columns: ; yaparak 1 satırda kaç sütun olacağını yazarız,tanesi için başka bir değer yazarız, auto ile dengelemesini sağlarız.
+    grid-template-rows: ; sadece her satırın,satırdaki itemlerin yüksekliğini belirler sırayla yukarıdan aşağı iner,auto dengeler.
+    eğer bir satırdaki itemlerin genişliği ana kabın genişliğinden az ise justify-content: ; kullanarak yatayda her sütunun yerine tesis ederiz,bunlar => start(hepsi yan yana başlangıçta), end(hepsi yan yana sonda), center(hepsi yan yana ortaya hizalı), space-between/around/evenly(between aralarında eşit boşluk bırakarak ilk ve son başta ve sonra,around etrafa yayılmış şekilde ve araları aynı köşeler farklı,evenly araları ve çevreleri arası aynı)
+    eğer bir sütundaki itemlerin genişliği ana kabın genişliğinden az ise align-content: ; kullanılarak yeri ayarlanır,bunlar aynıdır justify-content: ;-->
+    </div>
+</body>
+</html>
