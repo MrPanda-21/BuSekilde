@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form kullanımı</title>
+</head>
+<body>
+    <form action="Position.html">
+        <input type="text" placeholder="Ad-Soyad" required>
+        <br><br>
+        <input type="password" placeholder="Password" required>
+        <br><br>
+        <input type="email" placeholder="Email" required>
+        <br><br>
+        <input type="radio" name="cinsiyet">Erkek
+        <input type="radio" name="cinsiyet"> Kadın <!--name aynı olunca aynı soruya ait olurlar ve sadece 1 tanesi şeçilebilmiştir.-->
+        <br><br><input type="checkbox" name="hobiler">Futbol</input>
+        <input type="checkbox" name="hobiler">Kitap okumak
+        <input type="checkbox" name="hobiler">Gezmek
+        <input type="checkbox" name="hobiler">Resim yapmak
+        <input type="checkbox" name="hobiler">Yoga
+        <br><br>
+
+        <select name="" id="">
+            <option value="mazda">Mazda</option>
+            <option value="nissan">Nissan</option>
+            <option value="opel">Opel</option>
+            <option value="renault" selected>Renault</option> <!--default olarak gelir Renault-->
+        </select>
+
+        <br><br>
+        <select name="" id="" multiple>
+            <option value="mazda" selected>Mazda</option>
+            <option value="nissan">Nissan</option>
+            <option value="opel">Opel</option>
+            <option value="renault" selected>Renault</option> <!--default olarak gelir Renault-->
+        </select>
+        <br><br>
+        <textarea  cols="30" rows="10" maxlength="10"></textarea>  <!--max lenght kıstılar yazı uzunluk-->
+        <br><br>
+        <input type="reset">
+        <br><br>
+        <input type="submit" value="Yolla">
+    </form>
+    
+</body>
+</html>

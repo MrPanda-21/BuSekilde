@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margin ve Padding</title>
+    <style>
+        .box{
+            width:100px;
+            height:100px;
+        }
+        #red{
+            background-color:red;
+            margin: 10px 20px 10px 40px;
+        }
+        #blue{
+            box-sizing: border-box;
+            background-color:blue;
+            padding:5px;
+        }
+        #green{
+            background-color:green;
+            /*margin:20px;*/
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="red" class="box"></div>
+    <div id="blue" class="box"></div>
+    <span> <div id="green" class="box"></div> </span>
+    
+</body>
+</html>
